@@ -40,3 +40,6 @@ This is a capstone project for educational purposes. Contributions, ideas, and f
 
 ## License
 [MIT License](https://opensource.org/licenses/MIT)
+
+## Project Status
+Initial setup and README creation completed. Further development is in progress.
