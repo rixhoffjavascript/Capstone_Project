@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    @apply bg-neutral-50;
+  }
+
+  h1 {
+    @apply text-4xl font-bold text-secondary mb-6;
+  }
+
+  h2 {
+    @apply text-3xl font-bold text-secondary mb-4;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold text-secondary mb-3;
+  }
+
+  p {
+    @apply text-neutral-600;
+  }
+}
+
+@layer components {
+  .hero-title {
+    @apply text-5xl font-bold text-secondary mb-4;
+  }
+
+  .hero-subtitle {
+    @apply text-xl text-neutral-600 max-w-2xl mx-auto;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-secondary mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-neutral-600 max-w-2xl mx-auto mb-8;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white px-6 py-3 rounded-lg hover:bg-secondary-dark transition-colors;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-secondary px-6 py-3 rounded-lg hover:bg-accent-dark transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-card p-6 transition-all hover:shadow-lg;
+  }
+
+  .input-field {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-neutral-700;
+  }
+
+  .error-message {
+    @apply text-red-600 text-sm mt-1;
+  }
+
+  .success-message {
+    @apply text-green-600 text-sm mt-1;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+}
