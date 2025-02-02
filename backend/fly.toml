@@ -1,0 +1,49 @@
+app = "app-wazkdqhn"
+primary_region = "lax"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  DATABASE_URL = "sqlite:///./data/flooring.db"
+  PORT = "8080"
+  PYTHONUNBUFFERED = "1"
+  SECRET_KEY = "xa2lGaTxI6IyjjGEHLBdmF_e1gPNpMVi2Pl3mqdxRJY"
+  ACCESS_TOKEN_EXPIRE_MINUTES = "30"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+
+[deploy]
+  strategy = "bluegreen"
+  release_command = "python -m alembic upgrade head"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8080
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [services.concurrency]
+    type = "connections"
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.tcp_checks]]
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "1s"
+    restart_limit = 0
